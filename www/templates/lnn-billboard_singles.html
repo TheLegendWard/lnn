@@ -1,25 +1,33 @@
 	<ion-view view-title=" {{ billboard.title.rendered }}" hide-nav-bar="false" >
 		<!-- content -->
 		<ion-content delegate-handle="top" lazy-scroll scroll="true"   id="page-billboard_singles" class="page-billboard_singles">
-					<ion-refresher pulling-text="Pull to refresh..."  on-refresh="doRefresh()"></ion-refresher>
+		<ion-refresher pulling-text="Pull to refresh..."  on-refresh="doRefresh()"></ion-refresher>
 			<div class="list ">
+      <!-- images -->
+      <div class="itemn noborder"><img class="full-image" ng-src="{{billboard.x_featured_media_medium}}"/></div>
+      <!-- ./images -->
+      
+      <!-- text -->
+      <div class="itemcatsingle"><span class="subdued" ><span class="icon ion-android-globe"> {{billboard.x_categories}}</span></span></div>
+      <!-- ./text -->
+
+      
+
 
 					<!-- heading-1 -->
 					<div class="item item-divider"  ng-bind-html="billboard.title.rendered | to_trusted">{{billboard.title.rendered}}</div>
 					<!-- ./heading-1 -->
 
-					<!-- text -->
-					<div class="item item-text-wrap"><span class="subdued" ><span class="icon ion-android-calendar"> {{billboard.x_date}}</span></span></div>
-					<!-- ./text -->
+          <div class="row dateshare">
+				<div class="col col-80">
+                  <span class="subdued" >{{billboard.x_date | date:'EEE, MMM d' }}</span>
+                  </div>
+                  
+			</div>
 
-					<!-- text -->
-					<div class="item item-text-wrap"><span class="subdued" ><span class="icon ion-android-contact"> {{billboard.x_author}}</span></span></div>
-					<!-- ./text -->
+					
 
-					<!-- images -->
-					<div class="item noborder"><img class="full-image" ng-src="{{billboard.x_featured_media_original}}"/></div>
-					<!-- ./images -->
-
+					
 					<!-- to_trusted -->
 					<div class="item item-text-wrap noborder to_trusted {{ fontsize }}" ng-bind-html="billboard.content.rendered | strHTML"></div>
 					<!-- ./to_trusted -->
@@ -28,19 +36,9 @@
 					<div class="item item-text-wrap"><span class="subdued" ><span class="icon ion-ios-pricetags"> {{billboard.x_tags}}</span></span></div>
 					<!-- ./text -->
 
-					<!-- text -->
-					<div class="item item-text-wrap"><span class="subdued" ><span class="icon ion-bookmark"> {{billboard.x_categories}}</span></span></div>
-					<!-- ./text -->
+					
 
-					<!-- share_link -->
-					<div class="item">
-						<button run-social-sharing message="{{ billboard.link }}" class="button button-small ion-android-share-alt button-outline button-positive icon-left">Share Link</button>
-					</div>
-					<!-- ./share_link -->
-
-					<!-- link -->
-					<div class="item item-button"><a class="button button-light ink-dark" ng-click="openURL(billboard.link)">Link</a></div>
-					<!-- ./link -->
+					
 			</div>
 			<br/><br/><br/>
 

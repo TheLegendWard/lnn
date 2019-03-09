@@ -4234,7 +4234,7 @@ $ionicConfig.backButton.text("");
 	};
 	var targetQuery = ""; //default param
 	var raplaceWithQuery = "";
-	//fix url Liberia News Network
+	//fix url  
 	targetQuery = "exclude=1"; //default param
 	raplaceWithQuery = "exclude=1";
 	
