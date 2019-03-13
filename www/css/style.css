@@ -241,11 +241,6 @@ ul.rating li i{color:#FFCC00}
 /** option page **/
 #page-dashboard{background: url("../data/images/background/bg0.jpg") no-repeat left top fixed;background-size: cover;width:100%;height:100%;background-repeat:no-repeat;}
 #page-dashboard_singles{background: url("../data/images/background/bg3.jpg") no-repeat left top fixed;background-size: cover;width:100%;height:100%;background-repeat:no-repeat;}
-#lnn-test_page #navbar-right-top .bar-header,#lnn-test_page #navbar-left-top .bar-header{background: transparent;box-shadow:none;-moz-box-shadow:none;-webkit-box-shadow:none;}
-#lnn-test_page .has-header{top:0;}
-#lnn-test_page .has-header:before{content:" ";height:44px;display:block}
-#lnn-test_page .has-header{top:0;}
-#lnn-test_page .has-header:before{content:" ";height:0;display:block}
 /** page billboard_singles **/
 
 /** page dashboard **/
@@ -288,6 +283,7 @@ ul.rating li i{color:#FFCC00}
 .linablock .row {
    
     background-color: #000;
+  
    
 }
 
@@ -301,6 +297,25 @@ padding-bottom: 10px;}
 #the_burh_chickenCtrl .list {
     margin-bottom: 20px;
 }
+
+
+.slide-box-hero .caption h2 {
+    font-size: 20px;
+    color: #fff;
+    opacity: 1;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.9);
+    background: #000!important;
+    padding: 6px;
+}
+
+.swiper-slide {
+  background-color: #fff;}
+
+.swiper-container-horizontal > .swiper-pagination {
+    bottom: 5px;
+}
+/** page lina **/
+
 /** page lina_singles **/
 
 /** page lnn_posts **/
@@ -343,22 +358,8 @@ h2.ng-binding {
 
 /** page observer_singles **/
 
-/** page post_bookmark **/
-.post_bookmark{margin-top: 50%;}
-.post_bookmark .icon:before{font-size:72px;font-weight: 600;}
-.bookmarkimg img {width:30%; float:left; margin-right:10px;}
-.bkitem .item-content{
-    padding-left: 15px !important; padding-right:10px;
-}
-
-.item h2.bktxt {
-    margin: 0 0 2px 0;
-        margin-bottom: 2px;
-    font-size: 14px !important;
-    font-weight: 700;
-}
 /** page post_singles **/
-.subduedate {font-size:12px;}
+
 /** page posttest_bookmark **/
 .posttest_bookmark{margin-top: 50%;}
 .posttest_bookmark .icon:before{font-size:72px;font-weight: 600;}
@@ -1067,3 +1068,9 @@ font-size: 10px; margin-left:0px;}
 .list:last-child {
     margin-bottom: 10px;
 }
+
+.dateshare .ion-ios-bookmarks::before, .dateshare .ion-share::before, .dateshare .ion-ios-star::before {
+    font-size: 20px;
+    color: #999;
+}
+

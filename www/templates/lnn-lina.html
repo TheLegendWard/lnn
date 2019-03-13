@@ -1,8 +1,7 @@
 	<ion-view view-title=" LINA" hide-nav-bar="false" >
 		<!-- content -->
 		<ion-content delegate-handle="top" lazy-scroll  id="page-lina" class=" page-lina">
-		
-			<!-- code refresh -->
+					<!-- code refresh -->
 			<ion-refresher pulling-text="{{ 'Pull to refresh...' | translate }}"  on-refresh="doRefresh()"></ion-refresher>
 			<!-- ./code refresh -->
 			
@@ -15,7 +14,9 @@
 				</div>
 			</ion-list>
 			<!-- ./code search -->
-
+ <!-- text -->
+					<div class="itemcatsingle"><span class="subdued" ><span class="icon ion-android-globe"> {{lina.x_categories}}</span></span></div>
+					<!-- ./text -->
 
 			<!-- code listing -->
 			<div class="list animate-none">

@@ -550,20 +550,6 @@ angular.module("lnn", ["ngCordova","ionic","ionMdInput","ionic-material","ion-da
 		}
 	})
 
-	.state("lnn.post_bookmark", {
-		url: "/post_bookmark",
-		cache:false,
-		views: {
-			"lnn-side_menus" : {
-						templateUrl:"templates/lnn-post_bookmark.html",
-						controller: "post_bookmarkCtrl"
-					},
-			"fabButtonUp" : {
-						template: '',
-					},
-		}
-	})
-
 	.state("lnn.post_singles", {
 		url: "/post_singles/:id",
 		cache:false,
@@ -598,20 +584,6 @@ angular.module("lnn", ["ngCordova","ionic","ionMdInput","ionic-material","ion-da
 			"lnn-side_menus" : {
 						templateUrl:"templates/lnn-slide_tab_menu.html",
 						controller: "slide_tab_menuCtrl"
-					},
-			"fabButtonUp" : {
-						template: '',
-					},
-		}
-	})
-
-	.state("lnn.test_page", {
-		url: "/test_page/:categories",
-		cache:false,
-		views: {
-			"lnn-side_menus" : {
-						templateUrl:"templates/lnn-test_page.html",
-						controller: "test_pageCtrl"
 					},
 			"fabButtonUp" : {
 						template: '',
