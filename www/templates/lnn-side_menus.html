@@ -22,8 +22,11 @@
 				<ion-item ng-hide="hide_menu_news_sources"  class="menu-news_sources item-sidebar item item-icon-left text-left dark-ink" nav-clear="" menu-close="" ui-sref="lnn.news_sources">
 					<i class="icon ion-grid"></i> {{ "News Sources" | translate }}
 				</ion-item>
-				<ion-item ng-hide="hide_menu_post_bookmark"  class="menu-post_bookmark item-sidebar item item-icon-left text-left dark-ink" nav-clear="" menu-close="" ui-sref="lnn.post_bookmark">
-					<i class="icon ion-ios-bookmarks"></i> {{ "Bookmark" | translate }}
+				<ion-item ng-hide="hide_menu_about_lnn"  class="menu-about_lnn item-sidebar item item-icon-left text-left dark-ink" nav-clear="" menu-close="" ui-sref="lnn.about_lnn">
+					<i class="icon ion-android-bulb"></i> {{ "About LNN" | translate }}
+				</ion-item>
+				<ion-item ng-hide="hide_menu_rate_us"  class="menu-rate_us item-sidebar item item-icon-left text-left dark-ink" nav-clear="" menu-close="" ng-click="openURL('market://details?id=com.imabuilder.thewardinnovationgroup.lnn')">
+					<i class="icon ion-android-star"></i> {{ "Rate Us" | translate }}
 				</ion-item>
 			</ion-list>
 		</ion-content>

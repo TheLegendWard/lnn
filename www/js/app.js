@@ -20,7 +20,8 @@ angular.module("lnn", ["ngCordova","ionic","ionMdInput","ionic-material","ion-da
 
 		$rootScope.hide_menu_home = false ;
 		$rootScope.hide_menu_news_sources = false ;
-		$rootScope.hide_menu_post_bookmark = false ;
+		$rootScope.hide_menu_about_lnn = false ;
+		$rootScope.hide_menu_rate_us = false ;
 
 
 		$ionicPlatform.ready(function() {
@@ -256,6 +257,20 @@ angular.module("lnn", ["ngCordova","ionic","ionMdInput","ionic-material","ion-da
 			abstract: true,
 			templateUrl: "templates/lnn-side_menus.html",
 			controller: "side_menusCtrl",
+	})
+
+	.state("lnn.about_lnn", {
+		url: "/about_lnn",
+		cache:false,
+		views: {
+			"lnn-side_menus" : {
+						templateUrl:"templates/lnn-about_lnn.html",
+						controller: "about_lnnCtrl"
+					},
+			"fabButtonUp" : {
+						template: '',
+					},
+		}
 	})
 
 	.state("lnn.about_us", {
@@ -494,6 +509,20 @@ angular.module("lnn", ["ngCordova","ionic","ionMdInput","ionic-material","ion-da
 		}
 	})
 
+	.state("lnn.my", {
+		url: "/my/:categories",
+		cache:false,
+		views: {
+			"lnn-side_menus" : {
+						templateUrl:"templates/lnn-my.html",
+						controller: "myCtrl"
+					},
+			"fabButtonUp" : {
+						template: '',
+					},
+		}
+	})
+
 	.state("lnn.news_sources", {
 		url: "/news_sources",
 		cache:false,
@@ -550,13 +579,13 @@ angular.module("lnn", ["ngCordova","ionic","ionMdInput","ionic-material","ion-da
 		}
 	})
 
-	.state("lnn.post_singles", {
-		url: "/post_singles/:id",
+	.state("lnn.post_bookmark", {
+		url: "/post_bookmark",
 		cache:false,
 		views: {
 			"lnn-side_menus" : {
-						templateUrl:"templates/lnn-post_singles.html",
-						controller: "post_singlesCtrl"
+						templateUrl:"templates/lnn-post_bookmark.html",
+						controller: "post_bookmarkCtrl"
 					},
 			"fabButtonUp" : {
 						template: '',
@@ -564,13 +593,13 @@ angular.module("lnn", ["ngCordova","ionic","ionMdInput","ionic-material","ion-da
 		}
 	})
 
-	.state("lnn.posttest_bookmark", {
-		url: "/posttest_bookmark",
+	.state("lnn.post_singles", {
+		url: "/post_singles/:id",
 		cache:false,
 		views: {
 			"lnn-side_menus" : {
-						templateUrl:"templates/lnn-posttest_bookmark.html",
-						controller: "posttest_bookmarkCtrl"
+						templateUrl:"templates/lnn-post_singles.html",
+						controller: "post_singlesCtrl"
 					},
 			"fabButtonUp" : {
 						template: '',

@@ -23,20 +23,14 @@
               
               
               <div class="row dateshare">
-  <div class="col col-60">
+  <div class="col col-80">
             <span class="subdued" >{{post.x_date | date:'EEE, MMM d' }}</span>
             </div>
             
             <div class="col col-10">
 <a ng-controller="ShareCtrl" ng-click="shareAnywhere(post.title.rendered, null, post.x_featured_media_medium, 'https://play.google.com/store/apps/details?id=com.legendapp.thewardinnovationgroup.lnn')"><i class="icon ion-share"></i></a>
 </div>
-             <div class="col col-10">
-    <a ng-click="addToDbVirtual(post);"><i class="icon ion-ios-bookmarks"></i> </a>
-            </div>
             
-            <div class="col col-10">
-    <a ng-href="#/lnn/post_bookmark"><i class="icon ion-ios-star"></i></a>
-  </div>
 </div>
 
               

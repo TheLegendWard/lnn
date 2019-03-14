@@ -374,6 +374,77 @@ angular.module("lnn.controllers", [])
 	controller_by_user();
 })
 
+// TODO: about_lnnCtrl --|-- 
+.controller("about_lnnCtrl", function($ionicConfig,$scope,$rootScope,$state,$location,$ionicScrollDelegate,$ionicListDelegate,$http,$httpParamSerializer,$stateParams,$timeout,$interval,$ionicLoading,$ionicPopup,$ionicPopover,$ionicActionSheet,$ionicSlideBoxDelegate,$ionicHistory,ionicMaterialInk,ionicMaterialMotion,$window,$ionicModal,base64,md5,$document,$sce,$ionicGesture,$translate,tmhDynamicLocale){
+	
+	$rootScope.headerExists = true;
+	$rootScope.ionWidth = $document[0].body.querySelector(".view-container").offsetWidth || 412;
+	$rootScope.grid64 = parseInt($rootScope.ionWidth / 64) ;
+	$rootScope.grid80 = parseInt($rootScope.ionWidth / 80) ;
+	$rootScope.grid128 = parseInt($rootScope.ionWidth / 128) ;
+	$rootScope.grid256 = parseInt($rootScope.ionWidth / 256) ;
+	$rootScope.last_edit = "page" ;
+	$scope.$on("$ionicView.afterEnter", function (){
+		var page_id = $state.current.name ;
+		$rootScope.page_id = page_id.replace(".","-") ;
+	});
+	if($rootScope.headerShrink == true){
+		$scope.$on("$ionicView.enter", function(){
+			$scope.scrollTop();
+		});
+	};
+	// TODO: about_lnnCtrl --|-- $scope.scrollTop
+	$rootScope.scrollTop = function(){
+		$timeout(function(){
+			$ionicScrollDelegate.$getByHandle("top").scrollTop();
+		},100);
+	};
+	// TODO: about_lnnCtrl --|-- $scope.toggleGroup
+	$scope.toggleGroup = function(group) {
+		if ($scope.isGroupShown(group)) {
+			$scope.shownGroup = null;
+		} else {
+			$scope.shownGroup = group;
+		}
+	};
+	
+	$scope.isGroupShown = function(group) {
+		return $scope.shownGroup === group;
+	};
+	
+	// TODO: about_lnnCtrl --|-- $scope.redirect
+	// redirect
+	$scope.redirect = function($url){
+		$window.location.href = $url;
+	};
+	
+	// Set Motion
+	$timeout(function(){
+		ionicMaterialMotion.slideUp({
+			selector: ".slide-up"
+		});
+	}, 300);
+	// code 
+
+	// TODO: about_lnnCtrl --|-- controller_by_user
+	// controller by user 
+	function controller_by_user(){
+		try {
+			
+			
+		} catch(e){
+			console.log("%cerror: %cPage: `about_lnn` and field: `Custom Controller`","color:blue;font-size:18px","color:red;font-size:18px");
+			console.dir(e);
+		}
+	}
+	$scope.rating = {};
+	$scope.rating.max = 5;
+	
+	// animation ink (ionic-material)
+	ionicMaterialInk.displayEffect();
+	controller_by_user();
+})
+
 // TODO: about_usCtrl --|-- 
 .controller("about_usCtrl", function($ionicConfig,$scope,$rootScope,$state,$location,$ionicScrollDelegate,$ionicListDelegate,$http,$httpParamSerializer,$stateParams,$timeout,$interval,$ionicLoading,$ionicPopup,$ionicPopover,$ionicActionSheet,$ionicSlideBoxDelegate,$ionicHistory,ionicMaterialInk,ionicMaterialMotion,$window,$ionicModal,base64,md5,$document,$sce,$ionicGesture,$translate,tmhDynamicLocale){
 	
@@ -1256,6 +1327,60 @@ $ionicConfig.backButton.text("");
 		localforage.setItem("observer_bookmark",JSON.stringify(virtual_items));
 		$timeout(function(){
 			$scope.loadDbVirtualObserver();
+		},200);
+	};
+	// TODO: dashboard_bookmarkCtrl --|-- Database for Cart/Bookmark
+	// TODO: dashboard_bookmarkCtrl --|-- $scope.loadDbVirtualPost
+	 
+	$scope.loadDbVirtualPost = function(){
+		$ionicLoading.show();
+		//dashboard_bookmark
+		$scope.post_bookmark = []; 
+		localforage.getItem("post_bookmark", function(err,dbVirtual){
+			if(dbVirtual === null){
+				$scope.post_bookmark = []; 
+			}else{
+				try{
+					$scope.post_bookmark = JSON.parse(dbVirtual); 
+					$rootScope.item_in_virtual_table_post = $scope.post_bookmark.length;
+				}catch (e){
+					$scope.post_bookmark = []; 
+				}
+			}
+		}).then(function(value){
+			$timeout(function(){
+				$ionicLoading.hide();
+			},200);
+		}).catch(function(err){
+			console.log(err);
+			$timeout(function(){
+				$ionicLoading.hide();
+			},200);
+		});
+	};
+	$scope.$on("$ionicView.enter", function (){
+		$scope.loadDbVirtualPost();
+	});
+	// TODO: dashboard_bookmarkCtrl --|-- $scope.clearDbVirtualPost
+	$scope.clearDbVirtualPost = function(){
+					$rootScope.item_in_virtual_table_post = 0;
+		localforage.setItem("post_bookmark",[]);
+		$timeout(function(){
+			$scope.loadDbVirtualPost();
+		},200);
+	};
+	// TODO: dashboard_bookmarkCtrl --|-- $scope.removeDbVirtualPost
+	$scope.removeDbVirtualPost = function(itemId){
+		var virtual_items = [];
+		var last_items = $scope.post_bookmark;
+		for(var z=0;z<last_items.length;z++){
+			if(itemId!==last_items[z].id){
+				virtual_items.push(last_items[z]);
+			}
+		}
+		localforage.setItem("post_bookmark",JSON.stringify(virtual_items));
+		$timeout(function(){
+			$scope.loadDbVirtualPost();
 		},200);
 	};
 	// code 
@@ -3649,6 +3774,47 @@ $ionicConfig.backButton.text("");
 		}
 		return newItems;
 	}
+	// TODO: lnn_postsCtrl --|-- $scope.addToVirtual
+	$scope.addToDbVirtual = function(newItem){
+		var is_already_exist = false ;
+		// animation loading 
+		$ionicLoading.show();
+		var virtual_items = []; 
+		localforage.getItem("post_bookmark", function(err,dbVirtual){
+			if(dbVirtual === null){
+				virtual_items = [];
+			}else{
+				try{
+					var last_items = JSON.parse(dbVirtual); 
+				}catch(e){
+					var last_items = [];
+				}
+				for(var z=0;z<last_items.length;z++){
+					virtual_items.push(last_items[z]);
+					if(newItem.categories ==  last_items[z].categories){
+						is_already_exist = true;
+					}
+				}
+			}
+		}).then(function(value){
+			if(is_already_exist === false){
+				newItem["_qty"]=1;
+				virtual_items.push(newItem);
+			}
+			localforage.setItem("post_bookmark",JSON.stringify(virtual_items));
+			$timeout(function(){
+				$ionicLoading.hide();
+			},200);
+		}).catch(function(err){
+			virtual_items = [];
+			virtual_items.push(newItem);
+			localforage.setItem("post_bookmark",JSON.stringify(virtual_items));
+			$timeout(function(){
+				$ionicLoading.hide();
+			},200);
+		})
+	};
+	
 	$scope.gmapOptions = {options: { scrollwheel: false }};
 	
 	var fetch_per_scroll = 1;
@@ -3995,6 +4161,80 @@ $ionicConfig.backButton.text("");
 $ionicConfig.backButton.text("");			
 		} catch(e){
 			console.log("%cerror: %cPage: `menu_two` and field: `Custom Controller`","color:blue;font-size:18px","color:red;font-size:18px");
+			console.dir(e);
+		}
+	}
+	$scope.rating = {};
+	$scope.rating.max = 5;
+	
+	// animation ink (ionic-material)
+	ionicMaterialInk.displayEffect();
+	controller_by_user();
+})
+
+// TODO: myCtrl --|-- 
+.controller("myCtrl", function($ionicConfig,$scope,$rootScope,$state,$location,$ionicScrollDelegate,$ionicListDelegate,$http,$httpParamSerializer,$stateParams,$timeout,$interval,$ionicLoading,$ionicPopup,$ionicPopover,$ionicActionSheet,$ionicSlideBoxDelegate,$ionicHistory,ionicMaterialInk,ionicMaterialMotion,$window,$ionicModal,base64,md5,$document,$sce,$ionicGesture,$translate,tmhDynamicLocale){
+	
+	$rootScope.headerExists = true;
+	$rootScope.ionWidth = $document[0].body.querySelector(".view-container").offsetWidth || 412;
+	$rootScope.grid64 = parseInt($rootScope.ionWidth / 64) ;
+	$rootScope.grid80 = parseInt($rootScope.ionWidth / 80) ;
+	$rootScope.grid128 = parseInt($rootScope.ionWidth / 128) ;
+	$rootScope.grid256 = parseInt($rootScope.ionWidth / 256) ;
+	$rootScope.last_edit = "table (postt)" ;
+	$scope.$on("$ionicView.afterEnter", function (){
+		var page_id = $state.current.name ;
+		$rootScope.page_id = page_id.replace(".","-") ;
+	});
+	if($rootScope.headerShrink == true){
+		$scope.$on("$ionicView.enter", function(){
+			$scope.scrollTop();
+		});
+	};
+	// TODO: myCtrl --|-- $scope.scrollTop
+	$rootScope.scrollTop = function(){
+		$timeout(function(){
+			$ionicScrollDelegate.$getByHandle("top").scrollTop();
+		},100);
+	};
+	// TODO: myCtrl --|-- $scope.toggleGroup
+	$scope.toggleGroup = function(group) {
+		if ($scope.isGroupShown(group)) {
+			$scope.shownGroup = null;
+		} else {
+			$scope.shownGroup = group;
+		}
+	};
+	
+	$scope.isGroupShown = function(group) {
+		return $scope.shownGroup === group;
+	};
+	
+	// TODO: myCtrl --|-- $scope.redirect
+	// redirect
+	$scope.redirect = function($url){
+		$window.location.href = $url;
+	};
+	
+	// Set Motion
+	$timeout(function(){
+		ionicMaterialMotion.slideUp({
+			selector: ".slide-up"
+		});
+	}, 300);
+	// code 
+
+	// TODO: myCtrl --|-- controller_by_user
+	// controller by user 
+	function controller_by_user(){
+		try {
+			
+//debug: all data
+//console.log(data_postts);
+$ionicConfig.backButton.text("");
+			
+		} catch(e){
+			console.log("%cerror: %cPage: `my` and field: `Custom Controller`","color:blue;font-size:18px","color:red;font-size:18px");
 			console.dir(e);
 		}
 	}
@@ -4829,6 +5069,60 @@ $ionicConfig.backButton.text("");
 			$scope.loadDbVirtualObserver();
 		},200);
 	};
+	// TODO: observer_bookmarkCtrl --|-- Database for Cart/Bookmark
+	// TODO: observer_bookmarkCtrl --|-- $scope.loadDbVirtualPost
+	 
+	$scope.loadDbVirtualPost = function(){
+		$ionicLoading.show();
+		//observer_bookmark
+		$scope.post_bookmark = []; 
+		localforage.getItem("post_bookmark", function(err,dbVirtual){
+			if(dbVirtual === null){
+				$scope.post_bookmark = []; 
+			}else{
+				try{
+					$scope.post_bookmark = JSON.parse(dbVirtual); 
+					$rootScope.item_in_virtual_table_post = $scope.post_bookmark.length;
+				}catch (e){
+					$scope.post_bookmark = []; 
+				}
+			}
+		}).then(function(value){
+			$timeout(function(){
+				$ionicLoading.hide();
+			},200);
+		}).catch(function(err){
+			console.log(err);
+			$timeout(function(){
+				$ionicLoading.hide();
+			},200);
+		});
+	};
+	$scope.$on("$ionicView.enter", function (){
+		$scope.loadDbVirtualPost();
+	});
+	// TODO: observer_bookmarkCtrl --|-- $scope.clearDbVirtualPost
+	$scope.clearDbVirtualPost = function(){
+					$rootScope.item_in_virtual_table_post = 0;
+		localforage.setItem("post_bookmark",[]);
+		$timeout(function(){
+			$scope.loadDbVirtualPost();
+		},200);
+	};
+	// TODO: observer_bookmarkCtrl --|-- $scope.removeDbVirtualPost
+	$scope.removeDbVirtualPost = function(itemId){
+		var virtual_items = [];
+		var last_items = $scope.post_bookmark;
+		for(var z=0;z<last_items.length;z++){
+			if(itemId!==last_items[z].id){
+				virtual_items.push(last_items[z]);
+			}
+		}
+		localforage.setItem("post_bookmark",JSON.stringify(virtual_items));
+		$timeout(function(){
+			$scope.loadDbVirtualPost();
+		},200);
+	};
 	// code 
 
 	// TODO: observer_bookmarkCtrl --|-- controller_by_user
@@ -5101,6 +5395,239 @@ $ionicConfig.backButton.text("");
 	controller_by_user();
 })
 
+// TODO: post_bookmarkCtrl --|-- 
+.controller("post_bookmarkCtrl", function($ionicConfig,$scope,$rootScope,$state,$location,$ionicScrollDelegate,$ionicListDelegate,$http,$httpParamSerializer,$stateParams,$timeout,$interval,$ionicLoading,$ionicPopup,$ionicPopover,$ionicActionSheet,$ionicSlideBoxDelegate,$ionicHistory,ionicMaterialInk,ionicMaterialMotion,$window,$ionicModal,base64,md5,$document,$sce,$ionicGesture,$translate,tmhDynamicLocale){
+	
+	$rootScope.headerExists = true;
+	$rootScope.ionWidth = $document[0].body.querySelector(".view-container").offsetWidth || 412;
+	$rootScope.grid64 = parseInt($rootScope.ionWidth / 64) ;
+	$rootScope.grid80 = parseInt($rootScope.ionWidth / 80) ;
+	$rootScope.grid128 = parseInt($rootScope.ionWidth / 128) ;
+	$rootScope.grid256 = parseInt($rootScope.ionWidth / 256) ;
+	$rootScope.last_edit = "table (post)" ;
+	$scope.$on("$ionicView.afterEnter", function (){
+		var page_id = $state.current.name ;
+		$rootScope.page_id = page_id.replace(".","-") ;
+	});
+	if($rootScope.headerShrink == true){
+		$scope.$on("$ionicView.enter", function(){
+			$scope.scrollTop();
+		});
+	};
+	// TODO: post_bookmarkCtrl --|-- $scope.scrollTop
+	$rootScope.scrollTop = function(){
+		$timeout(function(){
+			$ionicScrollDelegate.$getByHandle("top").scrollTop();
+		},100);
+	};
+	// TODO: post_bookmarkCtrl --|-- $scope.toggleGroup
+	$scope.toggleGroup = function(group) {
+		if ($scope.isGroupShown(group)) {
+			$scope.shownGroup = null;
+		} else {
+			$scope.shownGroup = group;
+		}
+	};
+	
+	$scope.isGroupShown = function(group) {
+		return $scope.shownGroup === group;
+	};
+	
+	// TODO: post_bookmarkCtrl --|-- $scope.redirect
+	// redirect
+	$scope.redirect = function($url){
+		$window.location.href = $url;
+	};
+	
+	// Set Motion
+	$timeout(function(){
+		ionicMaterialMotion.slideUp({
+			selector: ".slide-up"
+		});
+	}, 300);
+	// TODO: post_bookmarkCtrl --|-- Database for Cart/Bookmark
+	// TODO: post_bookmarkCtrl --|-- $scope.loadDbVirtualDashboard
+	 
+	$scope.loadDbVirtualDashboard = function(){
+		$ionicLoading.show();
+		//post_bookmark
+		$scope.dashboard_bookmark = []; 
+		localforage.getItem("dashboard_bookmark", function(err,dbVirtual){
+			if(dbVirtual === null){
+				$scope.dashboard_bookmark = []; 
+			}else{
+				try{
+					$scope.dashboard_bookmark = JSON.parse(dbVirtual); 
+					$rootScope.item_in_virtual_table_dashboard = $scope.dashboard_bookmark.length;
+				}catch (e){
+					$scope.dashboard_bookmark = []; 
+				}
+			}
+		}).then(function(value){
+			$timeout(function(){
+				$ionicLoading.hide();
+			},200);
+		}).catch(function(err){
+			console.log(err);
+			$timeout(function(){
+				$ionicLoading.hide();
+			},200);
+		});
+	};
+	$scope.$on("$ionicView.enter", function (){
+		$scope.loadDbVirtualDashboard();
+	});
+	// TODO: post_bookmarkCtrl --|-- $scope.clearDbVirtualDashboard
+	$scope.clearDbVirtualDashboard = function(){
+					$rootScope.item_in_virtual_table_dashboard = 0;
+		localforage.setItem("dashboard_bookmark",[]);
+		$timeout(function(){
+			$scope.loadDbVirtualDashboard();
+		},200);
+	};
+	// TODO: post_bookmarkCtrl --|-- $scope.removeDbVirtualDashboard
+	$scope.removeDbVirtualDashboard = function(itemId){
+		var virtual_items = [];
+		var last_items = $scope.dashboard_bookmark;
+		for(var z=0;z<last_items.length;z++){
+			if(itemId!==last_items[z].id){
+				virtual_items.push(last_items[z]);
+			}
+		}
+		localforage.setItem("dashboard_bookmark",JSON.stringify(virtual_items));
+		$timeout(function(){
+			$scope.loadDbVirtualDashboard();
+		},200);
+	};
+	// TODO: post_bookmarkCtrl --|-- Database for Cart/Bookmark
+	// TODO: post_bookmarkCtrl --|-- $scope.loadDbVirtualObserver
+	 
+	$scope.loadDbVirtualObserver = function(){
+		$ionicLoading.show();
+		//post_bookmark
+		$scope.observer_bookmark = []; 
+		localforage.getItem("observer_bookmark", function(err,dbVirtual){
+			if(dbVirtual === null){
+				$scope.observer_bookmark = []; 
+			}else{
+				try{
+					$scope.observer_bookmark = JSON.parse(dbVirtual); 
+					$rootScope.item_in_virtual_table_observer = $scope.observer_bookmark.length;
+				}catch (e){
+					$scope.observer_bookmark = []; 
+				}
+			}
+		}).then(function(value){
+			$timeout(function(){
+				$ionicLoading.hide();
+			},200);
+		}).catch(function(err){
+			console.log(err);
+			$timeout(function(){
+				$ionicLoading.hide();
+			},200);
+		});
+	};
+	$scope.$on("$ionicView.enter", function (){
+		$scope.loadDbVirtualObserver();
+	});
+	// TODO: post_bookmarkCtrl --|-- $scope.clearDbVirtualObserver
+	$scope.clearDbVirtualObserver = function(){
+					$rootScope.item_in_virtual_table_observer = 0;
+		localforage.setItem("observer_bookmark",[]);
+		$timeout(function(){
+			$scope.loadDbVirtualObserver();
+		},200);
+	};
+	// TODO: post_bookmarkCtrl --|-- $scope.removeDbVirtualObserver
+	$scope.removeDbVirtualObserver = function(itemId){
+		var virtual_items = [];
+		var last_items = $scope.observer_bookmark;
+		for(var z=0;z<last_items.length;z++){
+			if(itemId!==last_items[z].id){
+				virtual_items.push(last_items[z]);
+			}
+		}
+		localforage.setItem("observer_bookmark",JSON.stringify(virtual_items));
+		$timeout(function(){
+			$scope.loadDbVirtualObserver();
+		},200);
+	};
+	// TODO: post_bookmarkCtrl --|-- Database for Cart/Bookmark
+	// TODO: post_bookmarkCtrl --|-- $scope.loadDbVirtualPost
+	 
+	$scope.loadDbVirtualPost = function(){
+		$ionicLoading.show();
+		//post_bookmark
+		$scope.post_bookmark = []; 
+		localforage.getItem("post_bookmark", function(err,dbVirtual){
+			if(dbVirtual === null){
+				$scope.post_bookmark = []; 
+			}else{
+				try{
+					$scope.post_bookmark = JSON.parse(dbVirtual); 
+					$rootScope.item_in_virtual_table_post = $scope.post_bookmark.length;
+				}catch (e){
+					$scope.post_bookmark = []; 
+				}
+			}
+		}).then(function(value){
+			$timeout(function(){
+				$ionicLoading.hide();
+			},200);
+		}).catch(function(err){
+			console.log(err);
+			$timeout(function(){
+				$ionicLoading.hide();
+			},200);
+		});
+	};
+	$scope.$on("$ionicView.enter", function (){
+		$scope.loadDbVirtualPost();
+	});
+	// TODO: post_bookmarkCtrl --|-- $scope.clearDbVirtualPost
+	$scope.clearDbVirtualPost = function(){
+					$rootScope.item_in_virtual_table_post = 0;
+		localforage.setItem("post_bookmark",[]);
+		$timeout(function(){
+			$scope.loadDbVirtualPost();
+		},200);
+	};
+	// TODO: post_bookmarkCtrl --|-- $scope.removeDbVirtualPost
+	$scope.removeDbVirtualPost = function(itemId){
+		var virtual_items = [];
+		var last_items = $scope.post_bookmark;
+		for(var z=0;z<last_items.length;z++){
+			if(itemId!==last_items[z].id){
+				virtual_items.push(last_items[z]);
+			}
+		}
+		localforage.setItem("post_bookmark",JSON.stringify(virtual_items));
+		$timeout(function(){
+			$scope.loadDbVirtualPost();
+		},200);
+	};
+	// code 
+
+	// TODO: post_bookmarkCtrl --|-- controller_by_user
+	// controller by user 
+	function controller_by_user(){
+		try {
+			
+			
+		} catch(e){
+			console.log("%cerror: %cPage: `post_bookmark` and field: `Custom Controller`","color:blue;font-size:18px","color:red;font-size:18px");
+			console.dir(e);
+		}
+	}
+	$scope.rating = {};
+	$scope.rating.max = 5;
+	
+	// animation ink (ionic-material)
+	ionicMaterialInk.displayEffect();
+	controller_by_user();
+})
+
 // TODO: post_singlesCtrl --|-- 
 .controller("post_singlesCtrl", function($ionicConfig,$scope,$rootScope,$state,$location,$ionicScrollDelegate,$ionicListDelegate,$http,$httpParamSerializer,$stateParams,$timeout,$interval,$ionicLoading,$ionicPopup,$ionicPopover,$ionicActionSheet,$ionicSlideBoxDelegate,$ionicHistory,ionicMaterialInk,ionicMaterialMotion,$window,$ionicModal,base64,md5,$document,$sce,$ionicGesture,$translate,tmhDynamicLocale){
 	
@@ -5168,6 +5695,52 @@ $ionicConfig.backButton.text("");
 		},function(msg){
 		});
 	};
+	// TODO: post_singlesCtrl --|-- $scope.addToVirtual(); //data single
+	$scope.addToDbVirtual = function(newItem){
+		if(typeof newItem.id === "undefined"){
+			return false;
+		}
+		var is_already_exist = false ;
+		// animation loading 
+		$ionicLoading.show();
+		var virtual_items = []; 
+		localforage.getItem("post_bookmark", function(err,dbVirtual){
+			if(dbVirtual === null){
+				virtual_items = [];
+			}else{
+				try{
+					var last_items = JSON.parse(dbVirtual); 
+				}catch(e){
+					var last_items = [];
+				}
+				for(var z=0;z<last_items.length;z++){
+					virtual_items.push(last_items[z]);
+					if(newItem.id ==  last_items[z].id){
+						is_already_exist = true;
+					}
+				}
+			}
+		}).then(function(value){
+			if(is_already_exist === false){
+				newItem["_qty"]=1;
+				virtual_items.push(newItem);
+			}
+			localforage.setItem("post_bookmark",JSON.stringify(virtual_items));
+			$timeout(function(){
+				$ionicLoading.hide();
+				$rootScope.item_in_virtual_table_post = virtual_items.length;
+			},200);
+		}).catch(function(err){
+			virtual_items = [];
+			virtual_items.push(newItem);
+			localforage.setItem("post_bookmark",JSON.stringify(virtual_items));
+			$timeout(function(){
+				$ionicLoading.hide();
+				$rootScope.item_in_virtual_table_post = virtual_items.length;
+			},200);
+		})
+	};
+	
 	
 	// set default parameter http
 	var http_params = {};
@@ -5283,185 +5856,6 @@ $ionicConfig.backButton.text("");
 $ionicConfig.backButton.text("");			
 		} catch(e){
 			console.log("%cerror: %cPage: `post_singles` and field: `Custom Controller`","color:blue;font-size:18px","color:red;font-size:18px");
-			console.dir(e);
-		}
-	}
-	$scope.rating = {};
-	$scope.rating.max = 5;
-	
-	// animation ink (ionic-material)
-	ionicMaterialInk.displayEffect();
-	controller_by_user();
-})
-
-// TODO: posttest_bookmarkCtrl --|-- 
-.controller("posttest_bookmarkCtrl", function($ionicConfig,$scope,$rootScope,$state,$location,$ionicScrollDelegate,$ionicListDelegate,$http,$httpParamSerializer,$stateParams,$timeout,$interval,$ionicLoading,$ionicPopup,$ionicPopover,$ionicActionSheet,$ionicSlideBoxDelegate,$ionicHistory,ionicMaterialInk,ionicMaterialMotion,$window,$ionicModal,base64,md5,$document,$sce,$ionicGesture,$translate,tmhDynamicLocale){
-	
-	$rootScope.headerExists = true;
-	$rootScope.ionWidth = $document[0].body.querySelector(".view-container").offsetWidth || 412;
-	$rootScope.grid64 = parseInt($rootScope.ionWidth / 64) ;
-	$rootScope.grid80 = parseInt($rootScope.ionWidth / 80) ;
-	$rootScope.grid128 = parseInt($rootScope.ionWidth / 128) ;
-	$rootScope.grid256 = parseInt($rootScope.ionWidth / 256) ;
-	$rootScope.last_edit = "table (posttest)" ;
-	$scope.$on("$ionicView.afterEnter", function (){
-		var page_id = $state.current.name ;
-		$rootScope.page_id = page_id.replace(".","-") ;
-	});
-	if($rootScope.headerShrink == true){
-		$scope.$on("$ionicView.enter", function(){
-			$scope.scrollTop();
-		});
-	};
-	// TODO: posttest_bookmarkCtrl --|-- $scope.scrollTop
-	$rootScope.scrollTop = function(){
-		$timeout(function(){
-			$ionicScrollDelegate.$getByHandle("top").scrollTop();
-		},100);
-	};
-	// TODO: posttest_bookmarkCtrl --|-- $scope.toggleGroup
-	$scope.toggleGroup = function(group) {
-		if ($scope.isGroupShown(group)) {
-			$scope.shownGroup = null;
-		} else {
-			$scope.shownGroup = group;
-		}
-	};
-	
-	$scope.isGroupShown = function(group) {
-		return $scope.shownGroup === group;
-	};
-	
-	// TODO: posttest_bookmarkCtrl --|-- $scope.redirect
-	// redirect
-	$scope.redirect = function($url){
-		$window.location.href = $url;
-	};
-	
-	// Set Motion
-	$timeout(function(){
-		ionicMaterialMotion.slideUp({
-			selector: ".slide-up"
-		});
-	}, 300);
-	// TODO: posttest_bookmarkCtrl --|-- Database for Cart/Bookmark
-	// TODO: posttest_bookmarkCtrl --|-- $scope.loadDbVirtualDashboard
-	 
-	$scope.loadDbVirtualDashboard = function(){
-		$ionicLoading.show();
-		//posttest_bookmark
-		$scope.dashboard_bookmark = []; 
-		localforage.getItem("dashboard_bookmark", function(err,dbVirtual){
-			if(dbVirtual === null){
-				$scope.dashboard_bookmark = []; 
-			}else{
-				try{
-					$scope.dashboard_bookmark = JSON.parse(dbVirtual); 
-					$rootScope.item_in_virtual_table_dashboard = $scope.dashboard_bookmark.length;
-				}catch (e){
-					$scope.dashboard_bookmark = []; 
-				}
-			}
-		}).then(function(value){
-			$timeout(function(){
-				$ionicLoading.hide();
-			},200);
-		}).catch(function(err){
-			console.log(err);
-			$timeout(function(){
-				$ionicLoading.hide();
-			},200);
-		});
-	};
-	$scope.$on("$ionicView.enter", function (){
-		$scope.loadDbVirtualDashboard();
-	});
-	// TODO: posttest_bookmarkCtrl --|-- $scope.clearDbVirtualDashboard
-	$scope.clearDbVirtualDashboard = function(){
-					$rootScope.item_in_virtual_table_dashboard = 0;
-		localforage.setItem("dashboard_bookmark",[]);
-		$timeout(function(){
-			$scope.loadDbVirtualDashboard();
-		},200);
-	};
-	// TODO: posttest_bookmarkCtrl --|-- $scope.removeDbVirtualDashboard
-	$scope.removeDbVirtualDashboard = function(itemId){
-		var virtual_items = [];
-		var last_items = $scope.dashboard_bookmark;
-		for(var z=0;z<last_items.length;z++){
-			if(itemId!==last_items[z].id){
-				virtual_items.push(last_items[z]);
-			}
-		}
-		localforage.setItem("dashboard_bookmark",JSON.stringify(virtual_items));
-		$timeout(function(){
-			$scope.loadDbVirtualDashboard();
-		},200);
-	};
-	// TODO: posttest_bookmarkCtrl --|-- Database for Cart/Bookmark
-	// TODO: posttest_bookmarkCtrl --|-- $scope.loadDbVirtualObserver
-	 
-	$scope.loadDbVirtualObserver = function(){
-		$ionicLoading.show();
-		//posttest_bookmark
-		$scope.observer_bookmark = []; 
-		localforage.getItem("observer_bookmark", function(err,dbVirtual){
-			if(dbVirtual === null){
-				$scope.observer_bookmark = []; 
-			}else{
-				try{
-					$scope.observer_bookmark = JSON.parse(dbVirtual); 
-					$rootScope.item_in_virtual_table_observer = $scope.observer_bookmark.length;
-				}catch (e){
-					$scope.observer_bookmark = []; 
-				}
-			}
-		}).then(function(value){
-			$timeout(function(){
-				$ionicLoading.hide();
-			},200);
-		}).catch(function(err){
-			console.log(err);
-			$timeout(function(){
-				$ionicLoading.hide();
-			},200);
-		});
-	};
-	$scope.$on("$ionicView.enter", function (){
-		$scope.loadDbVirtualObserver();
-	});
-	// TODO: posttest_bookmarkCtrl --|-- $scope.clearDbVirtualObserver
-	$scope.clearDbVirtualObserver = function(){
-					$rootScope.item_in_virtual_table_observer = 0;
-		localforage.setItem("observer_bookmark",[]);
-		$timeout(function(){
-			$scope.loadDbVirtualObserver();
-		},200);
-	};
-	// TODO: posttest_bookmarkCtrl --|-- $scope.removeDbVirtualObserver
-	$scope.removeDbVirtualObserver = function(itemId){
-		var virtual_items = [];
-		var last_items = $scope.observer_bookmark;
-		for(var z=0;z<last_items.length;z++){
-			if(itemId!==last_items[z].id){
-				virtual_items.push(last_items[z]);
-			}
-		}
-		localforage.setItem("observer_bookmark",JSON.stringify(virtual_items));
-		$timeout(function(){
-			$scope.loadDbVirtualObserver();
-		},200);
-	};
-	// code 
-
-	// TODO: posttest_bookmarkCtrl --|-- controller_by_user
-	// controller by user 
-	function controller_by_user(){
-		try {
-			
-			
-		} catch(e){
-			console.log("%cerror: %cPage: `posttest_bookmark` and field: `Custom Controller`","color:blue;font-size:18px","color:red;font-size:18px");
 			console.dir(e);
 		}
 	}
