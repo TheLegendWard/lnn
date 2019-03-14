@@ -172,9 +172,9 @@ angular.module("lnn.controllers", [])
 					for(var e = 0; e < keys.length ; e++) {
 						localforage.setItem(keys[e],[]);
 					}
-					$state.go("lnn.home");
+					$state.go("lnn.dashboard");
 				}).catch(function(err) {
-					$state.go("lnn.home");
+					$state.go("lnn.dashboard");
 				});
 			}
 			$rootScope.closeMenuPopover();
@@ -575,7 +575,7 @@ $ionicConfig.backButton.text("");
 			scope: $scope,
 			buttons: [
 				{text:"Cancel",onTap: function(e){
-					$state.go("lnn.home");
+					$state.go("lnn.dashboard");
 				}},
 			],
 		}).then(function(form){
@@ -841,7 +841,7 @@ $ionicConfig.backButton.text("");
 			scope: $scope,
 			buttons: [
 				{text:"Cancel",onTap: function(e){
-					$state.go("lnn.home");
+					$state.go("lnn.dashboard");
 				}},
 				{text:"<strong>Save</strong>",type:"button-positive",onTap:function(e){
 						return $scope.form;
@@ -1465,7 +1465,7 @@ $ionicConfig.backButton.text("");
 			scope: $scope,
 			buttons: [
 				{text:"Cancel",onTap: function(e){
-					$state.go("lnn.home");
+					$state.go("lnn.dashboard");
 				}},
 				{text:"<strong>Save</strong>",type:"button-positive",onTap:function(e){
 						return $scope.form;
@@ -1826,7 +1826,7 @@ $ionicConfig.backButton.text("");
 			scope: $scope,
 			buttons: [
 				{text:"Cancel",onTap: function(e){
-					$state.go("lnn.home");
+					$state.go("lnn.dashboard");
 				}},
 			],
 		}).then(function(form){
@@ -2151,7 +2151,7 @@ $ionicConfig.backButton.text("");
 			scope: $scope,
 			buttons: [
 				{text:"Cancel",onTap: function(e){
-					$state.go("lnn.home");
+					$state.go("lnn.dashboard");
 				}},
 			],
 		}).then(function(form){
@@ -2344,7 +2344,7 @@ $ionicConfig.backButton.text("");
 			scope: $scope,
 			buttons: [
 				{text:"Cancel",onTap: function(e){
-					$state.go("lnn.home");
+					$state.go("lnn.dashboard");
 				}},
 			],
 		}).then(function(form){
@@ -2595,7 +2595,7 @@ $ionicConfig.backButton.text("");
 			scope: $scope,
 			buttons: [
 				{text:"Cancel",onTap: function(e){
-					$state.go("lnn.home");
+					$state.go("lnn.dashboard");
 				}},
 			],
 		}).then(function(form){
@@ -2933,7 +2933,7 @@ $ionicConfig.backButton.text("");
 			scope: $scope,
 			buttons: [
 				{text:"Cancel",onTap: function(e){
-					$state.go("lnn.home");
+					$state.go("lnn.dashboard");
 				}},
 			],
 		}).then(function(form){
@@ -3205,7 +3205,7 @@ $ionicConfig.backButton.text("");
 			scope: $scope,
 			buttons: [
 				{text:"Cancel",onTap: function(e){
-					$state.go("lnn.home");
+					$state.go("lnn.dashboard");
 				}},
 			],
 		}).then(function(form){
@@ -3530,7 +3530,7 @@ $ionicConfig.backButton.text("");
 			scope: $scope,
 			buttons: [
 				{text:"Cancel",onTap: function(e){
-					$state.go("lnn.home");
+					$state.go("lnn.dashboard");
 				}},
 			],
 		}).then(function(form){
@@ -3723,7 +3723,7 @@ $ionicConfig.backButton.text("");
 			scope: $scope,
 			buttons: [
 				{text:"Cancel",onTap: function(e){
-					$state.go("lnn.home");
+					$state.go("lnn.dashboard");
 				}},
 			],
 		}).then(function(form){
@@ -4305,7 +4305,7 @@ $ionicConfig.backButton.text("");
 			scope: $scope,
 			buttons: [
 				{text:"Cancel",onTap: function(e){
-					$state.go("lnn.home");
+					$state.go("lnn.dashboard");
 				}},
 			],
 		}).then(function(form){
@@ -4617,7 +4617,7 @@ $ionicConfig.backButton.text("");
 			scope: $scope,
 			buttons: [
 				{text:"Cancel",onTap: function(e){
-					$state.go("lnn.home");
+					$state.go("lnn.dashboard");
 				}},
 			],
 		}).then(function(form){
@@ -5203,7 +5203,7 @@ $ionicConfig.backButton.text("");
 			scope: $scope,
 			buttons: [
 				{text:"Cancel",onTap: function(e){
-					$state.go("lnn.home");
+					$state.go("lnn.dashboard");
 				}},
 			],
 		}).then(function(form){
@@ -5687,7 +5687,7 @@ $ionicConfig.backButton.text("");
 			scope: $scope,
 			buttons: [
 				{text:"Cancel",onTap: function(e){
-					$state.go("lnn.home");
+					$state.go("lnn.dashboard");
 				}},
 			],
 		}).then(function(form){
@@ -5997,7 +5997,7 @@ $ionicConfig.backButton.text("");
 			scope: $scope,
 			buttons: [
 				{text:"Cancel",onTap: function(e){
-					$state.go("lnn.home");
+					$state.go("lnn.dashboard");
 				}},
 			],
 		}).then(function(form){
@@ -6322,7 +6322,7 @@ $ionicConfig.backButton.text("");
 			scope: $scope,
 			buttons: [
 				{text:"Cancel",onTap: function(e){
-					$state.go("lnn.home");
+					$state.go("lnn.dashboard");
 				}},
 			],
 		}).then(function(form){
@@ -6515,7 +6515,7 @@ $ionicConfig.backButton.text("");
 			scope: $scope,
 			buttons: [
 				{text:"Cancel",onTap: function(e){
-					$state.go("lnn.home");
+					$state.go("lnn.dashboard");
 				}},
 			],
 		}).then(function(form){
@@ -6708,7 +6708,7 @@ $ionicConfig.backButton.text("");
 			scope: $scope,
 			buttons: [
 				{text:"Cancel",onTap: function(e){
-					$state.go("lnn.home");
+					$state.go("lnn.dashboard");
 				}},
 			],
 		}).then(function(form){
@@ -7033,7 +7033,7 @@ $ionicConfig.backButton.text("");
 			scope: $scope,
 			buttons: [
 				{text:"Cancel",onTap: function(e){
-					$state.go("lnn.home");
+					$state.go("lnn.dashboard");
 				}},
 			],
 		}).then(function(form){
@@ -7226,7 +7226,7 @@ $ionicConfig.backButton.text("");
 			scope: $scope,
 			buttons: [
 				{text:"Cancel",onTap: function(e){
-					$state.go("lnn.home");
+					$state.go("lnn.dashboard");
 				}},
 			],
 		}).then(function(form){

@@ -3,7 +3,7 @@ angular.module("lnn", ["ngCordova","ionic","ionMdInput","ionic-material","ion-da
 
 		$rootScope.appName = "LNN" ;
 		$rootScope.appLogo = "" ;
-		$rootScope.appVersion = "1.1" ;
+		$rootScope.appVersion = "2.0" ;
 		$rootScope.headerShrink = false ;
 
 		$rootScope.liveStatus = "pause" ;
@@ -103,7 +103,7 @@ angular.module("lnn", ["ngCordova","ionic","ionMdInput","ionic-material","ion-da
 			if($ionicHistory.backView()){
 				$ionicHistory.goBack();
 			}else{
-				$state.go("lnn.home");
+				$state.go("lnn.dashboard");
 			}
 			e.preventDefault();
 			return false;
@@ -708,5 +708,5 @@ angular.module("lnn", ["ngCordova","ionic","ionMdInput","ionic-material","ion-da
 // router by user
 
 
-	$urlRouterProvider.otherwise("/lnn/home");
+	$urlRouterProvider.otherwise("/lnn/dashboard");
 });
