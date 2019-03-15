@@ -3,7 +3,7 @@ angular.module("lnn", ["ngCordova","ionic","ionMdInput","ionic-material","ion-da
 
 		$rootScope.appName = "LNN" ;
 		$rootScope.appLogo = "" ;
-		$rootScope.appVersion = "1.2" ;
+		$rootScope.appVersion = "1.3" ;
 		$rootScope.headerShrink = false ;
 
 		$rootScope.liveStatus = "pause" ;
@@ -103,7 +103,7 @@ angular.module("lnn", ["ngCordova","ionic","ionMdInput","ionic-material","ion-da
 			if($ionicHistory.backView()){
 				$ionicHistory.goBack();
 			}else{
-				$state.go("lnn.dashboard");
+				$state.go("lnn.home");
 			}
 			e.preventDefault();
 			return false;
@@ -306,19 +306,6 @@ angular.module("lnn", ["ngCordova","ionic","ionMdInput","ionic-material","ion-da
 			"lnn-side_menus" : {
 						templateUrl:"templates/lnn-bookmarks.html",
 						controller: "bookmarksCtrl"
-					},
-			"fabButtonUp" : {
-						template: '',
-					},
-		}
-	})
-
-	.state("lnn.dashboard", {
-		url: "/dashboard",
-		views: {
-			"lnn-side_menus" : {
-						templateUrl:"templates/lnn-dashboard.html",
-						controller: "dashboardCtrl"
 					},
 			"fabButtonUp" : {
 						template: '',
@@ -708,5 +695,5 @@ angular.module("lnn", ["ngCordova","ionic","ionMdInput","ionic-material","ion-da
 // router by user
 
 
-	$urlRouterProvider.otherwise("/lnn/dashboard");
+	$urlRouterProvider.otherwise("/lnn/home");
 });
