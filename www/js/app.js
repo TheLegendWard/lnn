@@ -98,6 +98,22 @@ angular.module("lnn", ["ngCordova","ionic","ionMdInput","ionic-material","ion-da
 			}
 
 
+			//required: cordova plugin add onesignal-cordova-plugin --save
+			if(window.plugins && window.plugins.OneSignal){
+				window.plugins.OneSignal.enableNotificationsWhenActive(true);
+				var notificationOpenedCallback = function(jsonData){
+					try {
+						$timeout(function(){
+							$window.location = "#/lnn/" + jsonData.notification.payload.additionalData.page ;
+						},200);
+					} catch(e){
+						console.log("onesignal:" + e);
+					}
+				}
+				window.plugins.OneSignal.startInit("d52a6f44-5ec9-474d-a9c9-bd3c11f6c359").handleNotificationOpened(notificationOpenedCallback).endInit();
+			}
+
+
 		});
 		$ionicPlatform.registerBackButtonAction(function (e){
 			if($ionicHistory.backView()){

@@ -106,6 +106,7 @@
 	<plugin name="cordova-disable-http-cache" />
 	<plugin name="cordova-plugin-inappbrowser" />
 	<plugin name="onesignal-cordova-plugin" />
+	<plugin name="onesignal-cordova-plugin" />
 	<plugin name="cordova-promise-polyfill" />
 	<platform name="android">
 		<!-- splash and icon for build using ionic/cordova -->
