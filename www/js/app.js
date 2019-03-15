@@ -3,7 +3,7 @@ angular.module("lnn", ["ngCordova","ionic","ionMdInput","ionic-material","ion-da
 
 		$rootScope.appName = "LNN" ;
 		$rootScope.appLogo = "" ;
-		$rootScope.appVersion = "2.0" ;
+		$rootScope.appVersion = "1.2" ;
 		$rootScope.headerShrink = false ;
 
 		$rootScope.liveStatus = "pause" ;
