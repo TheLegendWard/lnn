@@ -596,6 +596,7 @@ angular.module("lnn", ["ngCordova","ionic","ionMdInput","ionic-material","ion-da
 
 	.state("lnn.slide_tab_menu", {
 		url: "/slide_tab_menu",
+		cache:false,
 		views: {
 			"lnn-side_menus" : {
 						templateUrl:"templates/lnn-slide_tab_menu.html",
