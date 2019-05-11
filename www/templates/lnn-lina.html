@@ -1,7 +1,8 @@
 	<ion-view view-title=" LINA" hide-nav-bar="false" >
 		<!-- content -->
 		<ion-content delegate-handle="top" lazy-scroll  id="page-lina" class=" page-lina">
-					<!-- code refresh -->
+		
+			<!-- code refresh -->
 			<ion-refresher pulling-text="{{ 'Pull to refresh...' | translate }}"  on-refresh="doRefresh()"></ion-refresher>
 			<!-- ./code refresh -->
 			
@@ -14,15 +15,13 @@
 				</div>
 			</ion-list>
 			<!-- ./code search -->
- <!-- text -->
-					<div class="itemcatsingle"><span class="subdued" ><span class="icon ion-android-globe"> {{lina.x_categories}}</span></span></div>
-					<!-- ./text -->
+
 
 			<!-- code listing -->
 			<div class="list animate-none">
 				<a class="item item-thumbnail-right light" ng-repeat="item in linas | filter: first_param | filter:filter_linas as results" ng-init="$last ? fireEvent() : null" ng-href="#/lnn/lina_singles/{{item.id}}" >
 					<h1 ng-bind-html="item.title.rendered | to_trusted"></h1>
-					<img ng-src="{{item.x_featured_media}}" />
+					<img image-lazy-src="{{item.x_featured_media}}" />
 						<span class="icon ion-android-calendar"> {{item.x_date}}</span>
 						<span class="icon ion-android-contact"> {{item.x_author}}</span>
 					<div class="to_trusted {{ fontsize }}" ng-bind-html="item.excerpt.rendered | strHTML"></div>

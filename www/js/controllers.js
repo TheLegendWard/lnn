@@ -689,9 +689,9 @@ $ionicConfig.backButton.text("");
 	// Retrieving data
 	var itemID = $stateParams.id;
 	// TODO: billboard_singlesCtrl --|-- $scope.fetchURL
-	$scope.fetchURL = "http://35.226.128.183/wp-json/wp/v2/posts/" + itemID;
+	$scope.fetchURL = "https://wardlincoln.com/wp-json/wp/v2/posts/" + itemID;
 	// TODO: billboard_singlesCtrl --|-- $scope.fetchURLp
-	$scope.fetchURLp = "http://35.226.128.183/wp-json/wp/v2/posts/" + itemID + "?callback=JSON_CALLBACK";
+	$scope.fetchURLp = "https://wardlincoln.com/wp-json/wp/v2/posts/" + itemID + "?callback=JSON_CALLBACK";
 	// TODO: billboard_singlesCtrl --|-- $scope.hashURL
 	$scope.hashURL = md5.createHash($scope.fetchURL);
 	
@@ -1584,9 +1584,9 @@ $ionicConfig.backButton.text("");
 	
 	
 	// TODO: frontpage_africaCtrl --|-- $scope.fetchURL
-	$scope.fetchURL = "http://35.226.128.183/wp-json/wp/v2/posts?categories=2";
+	$scope.fetchURL = "https://wardlincoln.com/wp-json/wp/v2/posts?categories=2";
 	// TODO: frontpage_africaCtrl --|-- $scope.fetchURLp
-	$scope.fetchURLp = "http://35.226.128.183/wp-json/wp/v2/posts?categories=2&callback=JSON_CALLBACK";
+	$scope.fetchURLp = "https://wardlincoln.com/wp-json/wp/v2/posts?categories=2&callback=JSON_CALLBACK";
 	// TODO: frontpage_africaCtrl --|-- $scope.hashURL
 	$scope.hashURL = md5.createHash( $scope.fetchURL.replace(targetQuery,raplaceWithQuery));
 	
@@ -1874,9 +1874,9 @@ $ionicConfig.backButton.text("");
 	// Retrieving data
 	var itemID = $stateParams.id;
 	// TODO: frontpage_africa_singlesCtrl --|-- $scope.fetchURL
-	$scope.fetchURL = "http://35.226.128.183/wp-json/wp/v2/posts/" + itemID;
+	$scope.fetchURL = "https://wardlincoln.com/wp-json/wp/v2/posts/" + itemID;
 	// TODO: frontpage_africa_singlesCtrl --|-- $scope.fetchURLp
-	$scope.fetchURLp = "http://35.226.128.183/wp-json/wp/v2/posts/" + itemID + "?callback=JSON_CALLBACK";
+	$scope.fetchURLp = "https://wardlincoln.com/wp-json/wp/v2/posts/" + itemID + "?callback=JSON_CALLBACK";
 	// TODO: frontpage_africa_singlesCtrl --|-- $scope.hashURL
 	$scope.hashURL = md5.createHash($scope.fetchURL);
 	
@@ -2102,9 +2102,9 @@ $ionicConfig.backButton.text("");
 	
 	
 	// TODO: gnn_liberiaCtrl --|-- $scope.fetchURL
-	$scope.fetchURL = "http://35.226.128.183/wp-json/wp/v2/posts?categories=7";
+	$scope.fetchURL = "https://wardlincoln.com/wp-json/wp/v2/posts?categories=7";
 	// TODO: gnn_liberiaCtrl --|-- $scope.fetchURLp
-	$scope.fetchURLp = "http://35.226.128.183/wp-json/wp/v2/posts?categories=7&callback=JSON_CALLBACK";
+	$scope.fetchURLp = "https://wardlincoln.com/wp-json/wp/v2/posts?categories=7&callback=JSON_CALLBACK";
 	// TODO: gnn_liberiaCtrl --|-- $scope.hashURL
 	$scope.hashURL = md5.createHash( $scope.fetchURL.replace(targetQuery,raplaceWithQuery));
 	
@@ -2315,8 +2315,8 @@ $ionicConfig.backButton.text("");
 	var targetQuery = ""; //default param
 	var raplaceWithQuery = "";
 	//fix url GNN Liberia
-	targetQuery = "categories=7"; //default param
-	raplaceWithQuery = "categories=7";
+	targetQuery = "categories=4"; //default param
+	raplaceWithQuery = "categories=4";
 		
 	$scope.first_param = {};
 	$scope.first_param.categories = "7";
@@ -2332,7 +2332,7 @@ $ionicConfig.backButton.text("");
 	}
 	
 	$scope.first_param = {};
-	$scope.first_param.categories = "7";
+	$scope.first_param.categories = "4";
 	if(typeof $stateParams.categories !== 'undefined'){
 		raplaceWithQuery = "categories=" + $stateParams.categories;
 		$scope.first_param.categories = $stateParams.categories;
@@ -2366,9 +2366,9 @@ $ionicConfig.backButton.text("");
 	
 	
 	// TODO: gnn_liberiaCtrl --|-- $scope.fetchURL
-	$scope.fetchURL = "http://35.226.128.183/wp-json/wp/v2/posts?categories=7";
+	$scope.fetchURL = "https://wardlincoln.com/wp-json/wp/v2/posts?categories=4";
 	// TODO: gnn_liberiaCtrl --|-- $scope.fetchURLp
-	$scope.fetchURLp = "http://35.226.128.183/wp-json/wp/v2/posts?categories=7&callback=JSON_CALLBACK";
+	$scope.fetchURLp = "https://wardlincoln.com/wp-json/wp/v2/posts?categories=4&callback=JSON_CALLBACK";
 	// TODO: gnn_liberiaCtrl --|-- $scope.hashURL
 	$scope.hashURL = md5.createHash( $scope.fetchURL.replace(targetQuery,raplaceWithQuery));
 	
@@ -2656,9 +2656,9 @@ $ionicConfig.backButton.text("");
 	// Retrieving data
 	var itemID = $stateParams.id;
 	// TODO: gnn_liberia_singlesCtrl --|-- $scope.fetchURL
-	$scope.fetchURL = "http://35.226.128.183/wp-json/wp/v2/posts/" + itemID;
+	$scope.fetchURL = "https://wardlincoln.com/wp-json/wp/v2/posts/" + itemID;
 	// TODO: gnn_liberia_singlesCtrl --|-- $scope.fetchURLp
-	$scope.fetchURLp = "http://35.226.128.183/wp-json/wp/v2/posts/" + itemID + "?callback=JSON_CALLBACK";
+	$scope.fetchURLp = "https://wardlincoln.com/wp-json/wp/v2/posts/" + itemID + "?callback=JSON_CALLBACK";
 	// TODO: gnn_liberia_singlesCtrl --|-- $scope.hashURL
 	$scope.hashURL = md5.createHash($scope.fetchURL);
 	
@@ -2925,11 +2925,11 @@ $ionicConfig.backButton.text("");
 	var targetQuery = ""; //default param
 	var raplaceWithQuery = "";
 	//fix url LINA
-	targetQuery = "categories=11"; //default param
-	raplaceWithQuery = "categories=11";
+	targetQuery = "categories=5"; //default param
+	raplaceWithQuery = "categories=5";
 		
 	$scope.first_param = {};
-	$scope.first_param.categories = "11";
+	$scope.first_param.categories = "5";
 	if(typeof $stateParams.categories !== 'undefined'){
 		raplaceWithQuery = "categories=" + $stateParams.categories;
 		$scope.first_param.categories = $stateParams.categories;
@@ -2963,9 +2963,9 @@ $ionicConfig.backButton.text("");
 	
 	
 	// TODO: linaCtrl --|-- $scope.fetchURL
-	$scope.fetchURL = "http://35.226.128.183/wp-json/wp/v2/posts?categories=11";
+	$scope.fetchURL = "https://wardlincoln.com/wp-json/wp/v2/posts?categories=5";
 	// TODO: linaCtrl --|-- $scope.fetchURLp
-	$scope.fetchURLp = "http://35.226.128.183/wp-json/wp/v2/posts?categories=11&callback=JSON_CALLBACK";
+	$scope.fetchURLp = "https://wardlincoln.com/wp-json/wp/v2/posts?categories=5&callback=JSON_CALLBACK";
 	// TODO: linaCtrl --|-- $scope.hashURL
 	$scope.hashURL = md5.createHash( $scope.fetchURL.replace(targetQuery,raplaceWithQuery));
 	
@@ -3253,9 +3253,9 @@ $ionicConfig.backButton.text("");
 	// Retrieving data
 	var itemID = $stateParams.id;
 	// TODO: lina_singlesCtrl --|-- $scope.fetchURL
-	$scope.fetchURL = "http://35.226.128.183/wp-json/wp/v2/posts/" + itemID;
+	$scope.fetchURL = "https://wardlincoln.com/wp-json/wp/v2/posts/" + itemID;
 	// TODO: lina_singlesCtrl --|-- $scope.fetchURLp
-	$scope.fetchURLp = "http://35.226.128.183/wp-json/wp/v2/posts/" + itemID + "?callback=JSON_CALLBACK";
+	$scope.fetchURLp = "https://wardlincoln.com/wp-json/wp/v2/posts/" + itemID + "?callback=JSON_CALLBACK";
 	// TODO: lina_singlesCtrl --|-- $scope.hashURL
 	$scope.hashURL = md5.createHash($scope.fetchURL);
 	
@@ -3522,9 +3522,9 @@ $ionicConfig.backButton.text("");
 	
 	
 	// TODO: lnn_postsCtrl --|-- $scope.fetchURL
-	$scope.fetchURL = "http://35.226.128.183/wp-json/wp/v2/posts?categories=2";
+	$scope.fetchURL = "https://wardlincoln.com/wp-json/wp/v2/posts?categories=2";
 	// TODO: lnn_postsCtrl --|-- $scope.fetchURLp
-	$scope.fetchURLp = "http://35.226.128.183/wp-json/wp/v2/posts?categories=2&callback=JSON_CALLBACK";
+	$scope.fetchURLp = "https://wardlincoln.com/wp-json/wp/v2/posts?categories=2&callback=JSON_CALLBACK";
 	// TODO: lnn_postsCtrl --|-- $scope.hashURL
 	$scope.hashURL = md5.createHash( $scope.fetchURL.replace(targetQuery,raplaceWithQuery));
 	
@@ -4050,9 +4050,9 @@ $ionicConfig.backButton.text("");
 	
 	
 	// TODO: news_sourcesCtrl --|-- $scope.fetchURL
-	$scope.fetchURL = "http://35.226.128.183/wp-json/wp/v2/categories?exclude=1";
+	$scope.fetchURL = "https://wardlincoln.com/wp-json/wp/v2/categories?exclude=1";
 	// TODO: news_sourcesCtrl --|-- $scope.fetchURLp
-	$scope.fetchURLp = "http://35.226.128.183/wp-json/wp/v2/categories?exclude=1&callback=JSON_CALLBACK";
+	$scope.fetchURLp = "https://wardlincoln.com/wp-json/wp/v2/categories?exclude=1&callback=JSON_CALLBACK";
 	// TODO: news_sourcesCtrl --|-- $scope.hashURL
 	$scope.hashURL = md5.createHash( $scope.fetchURL.replace(targetQuery,raplaceWithQuery));
 	
@@ -4403,9 +4403,9 @@ $ionicConfig.backButton.text("");
 	
 	
 	// TODO: observerCtrl --|-- $scope.fetchURL
-	$scope.fetchURL = "http://35.226.128.183/wp-json/wp/v2/posts?categories=3";
+	$scope.fetchURL = "https://wardlincoln.com/wp-json/wp/v2/posts?categories=3";
 	// TODO: observerCtrl --|-- $scope.fetchURLp
-	$scope.fetchURLp = "http://35.226.128.183/wp-json/wp/v2/posts?categories=3&callback=JSON_CALLBACK";
+	$scope.fetchURLp = "https://wardlincoln.com/wp-json/wp/v2/posts?categories=3&callback=JSON_CALLBACK";
 	// TODO: observerCtrl --|-- $scope.hashURL
 	$scope.hashURL = md5.createHash( $scope.fetchURL.replace(targetQuery,raplaceWithQuery));
 	
@@ -4972,9 +4972,9 @@ $ionicConfig.backButton.text("");
 	// Retrieving data
 	var itemID = $stateParams.id;
 	// TODO: observer_singlesCtrl --|-- $scope.fetchURL
-	$scope.fetchURL = "http://35.226.128.183/wp-json/wp/v2/posts?categories=3";
+	$scope.fetchURL = "https://wardlincoln.com/wp-json/wp/v2/posts?categories=3";
 	// TODO: observer_singlesCtrl --|-- $scope.fetchURLp
-	$scope.fetchURLp = "http://35.226.128.183/wp-json/wp/v2/posts?categories=3&callback=JSON_CALLBACK";
+	$scope.fetchURLp = "https://wardlincoln.com/wp-json/wp/v2/posts?categories=3&callback=JSON_CALLBACK";
 	// TODO: observer_singlesCtrl --|-- $scope.hashURL
 	$scope.hashURL = md5.createHash($scope.fetchURL);
 	
@@ -5456,9 +5456,9 @@ $ionicConfig.backButton.text("");
 	// Retrieving data
 	var itemID = $stateParams.id;
 	// TODO: post_singlesCtrl --|-- $scope.fetchURL
-	$scope.fetchURL = "http://35.226.128.183/wp-json/wp/v2/posts/" + itemID;
+	$scope.fetchURL = "https://wardlincoln.com/wp-json/wp/v2/posts/" + itemID;
 	// TODO: post_singlesCtrl --|-- $scope.fetchURLp
-	$scope.fetchURLp = "http://35.226.128.183/wp-json/wp/v2/posts/" + itemID + "?callback=JSON_CALLBACK";
+	$scope.fetchURLp = "https://wardlincoln.com/wp-json/wp/v2/posts/" + itemID + "?callback=JSON_CALLBACK";
 	// TODO: post_singlesCtrl --|-- $scope.hashURL
 	$scope.hashURL = md5.createHash($scope.fetchURL);
 	
@@ -5717,11 +5717,11 @@ $ionicConfig.backButton.text("");
 	var targetQuery = ""; //default param
 	var raplaceWithQuery = "";
 	//fix url The Bush Chicken
-	targetQuery = "categories=8"; //default param
-	raplaceWithQuery = "categories=8";
+	targetQuery = "categories=6"; //default param
+	raplaceWithQuery = "categories=6";
 		
 	$scope.first_param = {};
-	$scope.first_param.categories = "8";
+	$scope.first_param.categories = "6";
 	if(typeof $stateParams.categories !== 'undefined'){
 		raplaceWithQuery = "categories=" + $stateParams.categories;
 		$scope.first_param.categories = $stateParams.categories;
@@ -5755,9 +5755,9 @@ $ionicConfig.backButton.text("");
 	
 	
 	// TODO: the_burh_chickenCtrl --|-- $scope.fetchURL
-	$scope.fetchURL = "http://35.226.128.183/wp-json/wp/v2/posts?categories=8";
+	$scope.fetchURL = "https://wardlincoln.com/wp-json/wp/v2/posts?categories=6";
 	// TODO: the_burh_chickenCtrl --|-- $scope.fetchURLp
-	$scope.fetchURLp = "http://35.226.128.183/wp-json/wp/v2/posts?categories=8&callback=JSON_CALLBACK";
+	$scope.fetchURLp = "https://wardlincoln.com/wp-json/wp/v2/posts?categories=6&callback=JSON_CALLBACK";
 	// TODO: the_burh_chickenCtrl --|-- $scope.hashURL
 	$scope.hashURL = md5.createHash( $scope.fetchURL.replace(targetQuery,raplaceWithQuery));
 	
@@ -6045,9 +6045,9 @@ $ionicConfig.backButton.text("");
 	// Retrieving data
 	var itemID = $stateParams.id;
 	// TODO: the_burh_chicken_singlesCtrl --|-- $scope.fetchURL
-	$scope.fetchURL = "http://35.226.128.183/wp-json/wp/v2/posts/" + itemID;
+	$scope.fetchURL = "https://wardlincoln.com/wp-json/wp/v2/posts/" + itemID;
 	// TODO: the_burh_chicken_singlesCtrl --|-- $scope.fetchURLp
-	$scope.fetchURLp = "http://35.226.128.183/wp-json/wp/v2/posts/" + itemID + "?callback=JSON_CALLBACK";
+	$scope.fetchURLp = "https://wardlincoln.com/wp-json/wp/v2/posts/" + itemID + "?callback=JSON_CALLBACK";
 	// TODO: the_burh_chicken_singlesCtrl --|-- $scope.hashURL
 	$scope.hashURL = md5.createHash($scope.fetchURL);
 	
@@ -6238,9 +6238,9 @@ $ionicConfig.backButton.text("");
 	// Retrieving data
 	var itemID = $stateParams.id;
 	// TODO: the_bush_chicken_singlesCtrl --|-- $scope.fetchURL
-	$scope.fetchURL = "http://35.226.128.183/wp-json/wp/v2/posts/" + itemID;
+	$scope.fetchURL = "https://wardlincoln.com/wp-json/wp/v2/posts/" + itemID;
 	// TODO: the_bush_chicken_singlesCtrl --|-- $scope.fetchURLp
-	$scope.fetchURLp = "http://35.226.128.183/wp-json/wp/v2/posts/" + itemID + "?callback=JSON_CALLBACK";
+	$scope.fetchURLp = "https://wardlincoln.com/wp-json/wp/v2/posts/" + itemID + "?callback=JSON_CALLBACK";
 	// TODO: the_bush_chicken_singlesCtrl --|-- $scope.hashURL
 	$scope.hashURL = md5.createHash($scope.fetchURL);
 	
@@ -6428,11 +6428,11 @@ $ionicConfig.backButton.text("");
 	var targetQuery = ""; //default param
 	var raplaceWithQuery = "";
 	//fix url The Liberian Billboard
-	targetQuery = "categories=13"; //default param
-	raplaceWithQuery = "categories=13";
+	targetQuery = "categories=9"; //default param
+	raplaceWithQuery = "categories=9";
 		
 	$scope.first_param = {};
-	$scope.first_param.categories = "13";
+	$scope.first_param.categories = "9";
 	if(typeof $stateParams.categories !== 'undefined'){
 		raplaceWithQuery = "categories=" + $stateParams.categories;
 		$scope.first_param.categories = $stateParams.categories;
@@ -6466,9 +6466,9 @@ $ionicConfig.backButton.text("");
 	
 	
 	// TODO: the_liberian_billboardCtrl --|-- $scope.fetchURL
-	$scope.fetchURL = "http://35.226.128.183/wp-json/wp/v2/posts?categories=13";
+	$scope.fetchURL = "https://wardlincoln.com/wp-json/wp/v2/posts?categories=9";
 	// TODO: the_liberian_billboardCtrl --|-- $scope.fetchURLp
-	$scope.fetchURLp = "http://35.226.128.183/wp-json/wp/v2/posts?categories=13&callback=JSON_CALLBACK";
+	$scope.fetchURLp = "https://wardlincoln.com/wp-json/wp/v2/posts?categories=9&callback=JSON_CALLBACK";
 	// TODO: the_liberian_billboardCtrl --|-- $scope.hashURL
 	$scope.hashURL = md5.createHash( $scope.fetchURL.replace(targetQuery,raplaceWithQuery));
 	
@@ -6756,9 +6756,9 @@ $ionicConfig.backButton.text("");
 	// Retrieving data
 	var itemID = $stateParams.id;
 	// TODO: the_news_newspap_singlesCtrl --|-- $scope.fetchURL
-	$scope.fetchURL = "http://35.226.128.183/wp-json/wp/v2/posts/" + itemID;
+	$scope.fetchURL = "https://wardlincoln.com/wp-json/wp/v2/posts/" + itemID;
 	// TODO: the_news_newspap_singlesCtrl --|-- $scope.fetchURLp
-	$scope.fetchURLp = "http://35.226.128.183/wp-json/wp/v2/posts/" + itemID + "?callback=JSON_CALLBACK";
+	$scope.fetchURLp = "https://wardlincoln.com/wp-json/wp/v2/posts/" + itemID + "?callback=JSON_CALLBACK";
 	// TODO: the_news_newspap_singlesCtrl --|-- $scope.hashURL
 	$scope.hashURL = md5.createHash($scope.fetchURL);
 	
@@ -6946,11 +6946,11 @@ $ionicConfig.backButton.text("");
 	var targetQuery = ""; //default param
 	var raplaceWithQuery = "";
 	//fix url The News Newspaper
-	targetQuery = "categories=9"; //default param
-	raplaceWithQuery = "categories=9";
+	targetQuery = "categories=7"; //default param
+	raplaceWithQuery = "categories=7";
 		
 	$scope.first_param = {};
-	$scope.first_param.categories = "9";
+	$scope.first_param.categories = "7";
 	if(typeof $stateParams.categories !== 'undefined'){
 		raplaceWithQuery = "categories=" + $stateParams.categories;
 		$scope.first_param.categories = $stateParams.categories;
@@ -6984,9 +6984,9 @@ $ionicConfig.backButton.text("");
 	
 	
 	// TODO: the_news_newspaperCtrl --|-- $scope.fetchURL
-	$scope.fetchURL = "http://35.226.128.183/wp-json/wp/v2/posts?categories=9";
+	$scope.fetchURL = "https://wardlincoln.com/wp-json/wp/v2/posts?categories=7";
 	// TODO: the_news_newspaperCtrl --|-- $scope.fetchURLp
-	$scope.fetchURLp = "http://35.226.128.183/wp-json/wp/v2/posts?categories=9&callback=JSON_CALLBACK";
+	$scope.fetchURLp = "https://wardlincoln.com/wp-json/wp/v2/posts?categories=7&callback=JSON_CALLBACK";
 	// TODO: the_news_newspaperCtrl --|-- $scope.hashURL
 	$scope.hashURL = md5.createHash( $scope.fetchURL.replace(targetQuery,raplaceWithQuery));
 	

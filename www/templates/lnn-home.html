@@ -10,8 +10,8 @@
                 <div class="catimg"> <img src="data/images/images/fpa.png" width="" height="" /></div>
      
      <div class="assertive-900-bg topslide slide-box-hero" ng-controller="frontpage_africaCtrl">
-           <ion-slides class="slide-box-hero-content" options="{slidesPerView:1,autoplay:10000,loop:1}" slider="data.slider">
-             <ion-slide-page class="slide-box-hero-item" ng-repeat="item in data_frontpage_africas | limitTo : 5:0" >
+           <ion-slides class="slide-box-hero-content" options="{slidesPerView:1}" slider="data.slider">
+             <ion-slide-page class="slide-box-hero-item" ng-repeat="item in data_frontpage_africas | limitTo : 10:0" >
                
              <div class="slide-box-hero-container" style="">
                         <a class="modimg" ng-href="#/lnn/frontpage_africa_singles/{{item.id}}"> <img alt="" class="full-image" src="{{item.x_featured_media}}" /></a>
